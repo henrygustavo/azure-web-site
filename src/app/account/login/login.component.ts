@@ -1,11 +1,15 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChildren, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControlName, FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Subscription } from 'rxjs';
-import { merge } from 'rxjs';
-import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/merge';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { GenericValidator } from '../../shared/generic-validator';
+import { AuthService } from 'ng2-ui-auth';
+import { Router } from '@angular/router';
+import { MessageAlertHandleService } from '../../shared/message-alert-handle.service';
 
 @Component({
   selector: 'app-login',
@@ -24,19 +28,18 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
      genericValidator: GenericValidator;
      subscription: Subscription = new Subscription();
 
-    constructor(
-
-        private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private _authService: AuthService,
+        private _messageAlertHandleService: MessageAlertHandleService,
+        private _router: Router) {
 
         this.validationMessages = {
-            email: {
-                required: 'Email is required.',
-                minlength: 'Email must be at least 4 characters.',
-                email: 'Please enter a valid email address.'
+            userName: {
+                required: 'UserName is required.',
+                minlength: 'UserName must be at least 5 characters.'
             },
             password: {
                 required: 'Password is required.',
-                minlength: 'Password must be at least 6 characters.'
+                minlength: 'Password must be at least 5 characters.'
             }
         };
 
@@ -46,8 +49,8 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit(): void {
 
         this.mainForm = this.fb.group({
-            email:  new FormControl('', [Validators.required, Validators.minLength(4)]),
-            password: new FormControl ('', [Validators.required, Validators.minLength(6)])
+            userName:  new FormControl('', [Validators.required, Validators.minLength(5)]),
+            password: new FormControl ('', [Validators.required, Validators.minLength(5)])
 
         });
     }
@@ -55,13 +58,13 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     ngAfterViewInit(): void {
 
         const controlBlurs: Observable<any>[] = this.formInputElements
-            .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+        .map((formControl: ElementRef) => Observable.fromEvent(formControl.nativeElement, 'blur'));
 
-        const controlSubscription =  merge(this.mainForm.valueChanges, ...controlBlurs).pipe(debounceTime(800)).subscribe(() => {
-            this.displayMessage = this.genericValidator.processMessages(this.mainForm);
-        });
+        const controlSubscription =  Observable.merge(this.mainForm.valueChanges, ...controlBlurs).debounceTime(800).subscribe(() => {
+        this.displayMessage = this.genericValidator.processMessages(this.mainForm);
+    });
 
-        this.subscription.add(controlSubscription);
+    this.subscription.add(controlSubscription);
     }
 
     ngOnDestroy(): void {
@@ -70,6 +73,12 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
     signUp(): void {
 
+        const authLoginSubscription =  this._authService.login(JSON.stringify(this.mainForm.value)).subscribe({
+            error: (err: any) => this._messageAlertHandleService.handleError(err),
+            complete: () => this._router.navigateByUrl('dashboard')
+        });
+
+        this.subscription.add(authLoginSubscription);
 
     }
 }

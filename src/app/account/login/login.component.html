@@ -10,10 +10,10 @@
           <form novalidate (ngSubmit)="signUp()" [formGroup]="mainForm">
             <fieldset>
               <div class="form-group">
-                <div [ngClass]="{'has-error': displayMessage.email }">
-                  <input class="form-control" type="email" placeholder="Email" formControlName="email" />
-                  <span class="help-block" *ngIf="displayMessage.email">
-                    {{displayMessage.email}}
+                <div [ngClass]="{'has-error': displayMessage.userName }">
+                  <input class="form-control" placeholder="UserName" formControlName="userName" />
+                  <span class="help-block" *ngIf="displayMessage.userName">
+                    {{displayMessage.userName}}
                   </span>
                 </div>
               </div>
