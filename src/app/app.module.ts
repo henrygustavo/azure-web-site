@@ -6,7 +6,7 @@ import { appRoutes } from './app.routes';
 
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { Ng2UiAuthModule } from 'ng2-ui-auth';
-import { AuthConfig } from './authConfig';
+import { AuthConfig } from './auth-config';
 import { ToastModule } from 'ng2-toastr';
 import { BlockUIModule } from 'ng-block-ui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
