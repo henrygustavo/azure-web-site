@@ -9,6 +9,8 @@ import { Ng2UiAuthModule } from 'ng2-ui-auth';
 import { AuthConfig } from './authConfig';
 import { ToastModule } from 'ng2-toastr';
 import { BlockUIModule } from 'ng-block-ui';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MessageAlertHandleService } from './shared/message-alert-handle.service';
 
 @NgModule({
@@ -17,6 +19,7 @@ import { MessageAlertHandleService } from './shared/message-alert-handle.service
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     Ng2UiAuthModule.forRoot(AuthConfig),
     ToastModule.forRoot(),
     NgxPermissionsModule.forRoot(),
