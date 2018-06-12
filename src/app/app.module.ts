@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 
-import { NgxPermissionsModule } from 'ngx-permissions';
 import { Ng2UiAuthModule } from 'ng2-ui-auth';
 import { AuthConfig } from './auth-config';
 import { ToastModule } from 'ng2-toastr';
@@ -25,7 +24,6 @@ import { MenuService } from './shared/services/menu.service';
     BrowserAnimationsModule,
     Ng2UiAuthModule.forRoot(AuthConfig),
     ToastModule.forRoot(),
-    NgxPermissionsModule.forRoot(),
     BlockUIModule.forRoot(
       {
         message: 'Please wait...'
