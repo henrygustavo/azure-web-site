@@ -1,16 +1,19 @@
-import {Route, RouterModule} from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { Route, RouterModule } from '@angular/router';
+import { DashBoardComponent } from './dashboard/dashboard.component';
 import { ModuleWithProviders } from '@angular/core';
+import { AdminGuard } from './guards/admin.guard';
 
- const routes: Route[] = [
+const routes: Route[] = [
     {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashBoardComponent,
+        canActivate: [AdminGuard]
     },
     {
         path: '**',
         redirectTo: 'dashboard',
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [AdminGuard]
     }
 ];
 

@@ -11,11 +11,14 @@ import { ToastModule } from 'ng2-toastr';
 import { BlockUIModule } from 'ng-block-ui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MessageAlertHandleService } from './shared/message-alert-handle.service';
+import { MessageAlertHandleService } from './shared/services/message-alert.service';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { MenuService } from './shared/services/menu.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -23,10 +26,14 @@ import { MessageAlertHandleService } from './shared/message-alert-handle.service
     Ng2UiAuthModule.forRoot(AuthConfig),
     ToastModule.forRoot(),
     NgxPermissionsModule.forRoot(),
-    BlockUIModule,
+    BlockUIModule.forRoot(
+      {
+        message: 'Please wait...'
+      }
+    ),
     appRoutes
   ],
-  providers: [MessageAlertHandleService],
+  providers: [MessageAlertHandleService, MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

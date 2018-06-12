@@ -1,3 +1,8 @@
-<div id="wrapper">
-  <router-outlet></router-outlet>
-</div>
+<block-ui>
+  <app-header *ngIf="isAuthenticated"></app-header>
+
+  <div id="wrapper">
+    <router-outlet></router-outlet>
+  </div>
+  
+</block-ui>

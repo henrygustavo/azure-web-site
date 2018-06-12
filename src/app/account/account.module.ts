@@ -3,7 +3,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 
-import {accountRoutes} from './account.routes';
+import { accountRoutes } from './account.routes';
+import { AccountGuard } from './guards/account.guard';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import {accountRoutes} from './account.routes';
     CommonModule,
     accountRoutes
   ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent],
+  providers: [AccountGuard]
 })
 export class AccountModule { }
