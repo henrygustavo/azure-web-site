@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import { environment } from '../../../environments/environment';
 
-@Injectable()
 export abstract class BaseResourceService<T> {
 
   public baseUrl = '';
@@ -18,10 +17,10 @@ export abstract class BaseResourceService<T> {
     this.baseUrl = environment.apiUrl;
   }
 
-  public get(): Observable<T> {
+  public getAll(): Observable<T[]> {
 
     let entity$ = this._http.get(`${this.baseUrl}/${this._url}`)
-      .map((response: Response) => response.json())
+      .map((response: Response) => <T[]>response.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));
     return entity$;
   }

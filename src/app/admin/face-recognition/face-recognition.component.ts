@@ -13,6 +13,8 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui';
 export class FaceRecognitionComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
 
+  public faces: Face[] = [];
+
   constructor( private _menuService: MenuService,
                private _messageAlertHandleService: MessageAlertHandleService,
                private _faceService: FaceService) { }
@@ -26,9 +28,9 @@ export class FaceRecognitionComponent implements OnInit {
 
   loadFaces(): void {
 
-    this._faceService.get().subscribe(
-      (response: Face) => {
-            console.log(response);
+    this._faceService.getAll().subscribe(
+      (response: Face[]) => {
+           this.faces = response;
             this.blockUI.stop();
       },
       (error: any) => {

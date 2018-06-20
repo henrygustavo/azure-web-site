@@ -13,6 +13,8 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui';
 export class ImageRecognitionComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
 
+  images: Image[] = [];
+
   constructor(private _menuService: MenuService,
     private _messageAlertHandleService: MessageAlertHandleService,
     private _imageService: ImageService) { }
@@ -27,9 +29,9 @@ export class ImageRecognitionComponent implements OnInit {
   loadImages(): void {
 
     this.blockUI.start();
-    this._imageService.get().subscribe(
-      (response: Image) => {
-        console.log(response);
+    this._imageService.getAll().subscribe(
+      (response: Image[]) => {
+        this.images = response;
         this.blockUI.stop();
       },
       (error: any) => {
