@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { JwtHttp } from 'ng2-ui-auth';
 import { Observable } from 'rxjs/Observable';
