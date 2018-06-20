@@ -32,7 +32,8 @@ OnDestroy, AfterViewInit {
         this.menuItems = this._menuService.getListMenuItems();
 
         if (this._authService.getPayload() !== undefined) {
-            this.userName = this._authService.getPayload().sub;
+
+            this.userName = this._authService.getPayload().userName;
         }
     }
 
