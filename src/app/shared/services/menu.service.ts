@@ -12,8 +12,9 @@ export class MenuService {
     public getListMenuItems(): MenuItem[] {
 
         return [
-
-            new MenuItem('fa-home', 'dashboard', 'dashboard', 'DashBoard')
+                new MenuItem('fa-home', 'dashboard', 'dashboard', 'DashBoard'),
+                new MenuItem('fa-facebook-square', 'faces', 'faces', 'Face Recognition'),
+                new MenuItem('fa-image', 'images', 'images', 'Image Recognition')
         ];
     }
 
