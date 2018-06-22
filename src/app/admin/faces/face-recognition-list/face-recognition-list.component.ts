@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from '../../shared/services/menu.service';
-import { FaceService } from '../services/face.service';
-import { Face } from '../models/face';
-import { MessageAlertHandleService } from '../../shared/services/message-alert.service';
+import { MenuService } from '../../../shared/services/menu.service';
+import { FaceService } from '../../services/face.service';
+import { Face } from '../../models/face';
+import { MessageAlertHandleService } from '../../../shared/services/message-alert.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component({
-  selector: 'app-face-recognition',
-  templateUrl: './face-recognition.component.html',
-  styleUrls: ['./face-recognition.component.css']
+  selector: 'app-face-recognition-list',
+  templateUrl: './face-recognition-list.component.html',
+  styleUrls: ['./face-recognition-list.component.css']
 })
-export class FaceRecognitionComponent implements OnInit {
+export class FaceRecognitionListComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
 
   public faces: Face[] = [];
