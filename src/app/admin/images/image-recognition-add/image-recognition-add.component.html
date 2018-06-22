@@ -7,11 +7,17 @@
   <div class="row">
     <div class="col-md-6 well col-lg-offset-3">
       <div class="form-group">
-        <div class="col-md-12">
-          <a [routerLink]="['/images']" class="btn btn-default btn-block">Back</a>
+        <app-upload-file [isUploadBtn]="isUploadBtn" (onUploadEvent)="onUploadEvent($event)"></app-upload-file>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 well col-lg-offset-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <a [routerLink]="['/images']" class="btn btn-default btn-block">Back</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- /#page-wrapper -->
+  <!-- /#page-wrapper -->

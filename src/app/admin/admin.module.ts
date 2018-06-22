@@ -9,6 +9,7 @@ import { FaceRecognitionListComponent } from './faces/face-recognition-list/face
 import { ImageRecognitionListComponent } from './images/image-recognition-list/image-recognition-list.component';
 import { FaceRecognitionAddComponent } from './faces/face-recognition-add/face-recognition-add.component';
 import { ImageRecognitionAddComponent } from './images/image-recognition-add/image-recognition-add.component';
+import { UploadFileComponent } from './shared/upload-file/upload-file.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { ImageRecognitionAddComponent } from './images/image-recognition-add/ima
     adminRoutes
   ],
   declarations: [DashBoardComponent, FaceRecognitionListComponent,FaceRecognitionAddComponent,
-                ImageRecognitionListComponent, ImageRecognitionAddComponent],
+                ImageRecognitionListComponent, ImageRecognitionAddComponent, UploadFileComponent],
   providers: [AdminGuard, ImageService, FaceService]
 
 })
