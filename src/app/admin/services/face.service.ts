@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { JwtHttp } from 'ng2-ui-auth';
+
 import { BaseResourceService } from './base-resource.service';
 import { Face } from '../models/face';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class FaceService extends BaseResourceService <Face> {
-  constructor(private _jwHttp: JwtHttp) {
+  constructor(private _jwHttp: HttpClient) {
       super(_jwHttp, 'faces');
   }
 }

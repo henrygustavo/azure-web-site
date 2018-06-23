@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageAlertHandleService } from './shared/services/message-alert.service';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { MenuService } from './shared/services/menu.service';
+import { JsonInterceptorProvider } from './shared/services/JsonInterceptorService';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { MenuService } from './shared/services/menu.service';
     ),
     appRoutes
   ],
-  providers: [MessageAlertHandleService, MenuService],
+  providers: [MessageAlertHandleService, MenuService, JsonInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

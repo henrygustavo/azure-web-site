@@ -6,12 +6,13 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component(
   {
-    selector: 'app-image-recognition-add', 
-    templateUrl: './image-recognition-add.component.html', 
+    selector: 'app-image-recognition-add',
+    templateUrl: './image-recognition-add.component.html',
     styleUrls: ['./image-recognition-add.component.css']})
 export class ImageRecognitionAddComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
-  public isUploadBtn : boolean = true;
+  public isUploadBtn = true;
+  public response: any;
 
   constructor(private _menuService: MenuService,
     private _messageAlertHandleService: MessageAlertHandleService,
@@ -20,13 +21,13 @@ export class ImageRecognitionAddComponent implements OnInit {
   ngOnInit() {
 
     this._menuService.selectMenuItem('images');
-  }  
-  
-  onUploadEvent(formData: FormData){
+  }
+
+  onUploadEvent(formData: FormData) {
     this.blockUI.start();
     this._imageService.uploadImage(formData).subscribe(
-      (response: any) => {    
-            console.log(response);
+      (response: any) => {
+            this.response = response;
             this.blockUI.stop();
       },
       (error: any) => {
@@ -34,5 +35,4 @@ export class ImageRecognitionAddComponent implements OnInit {
              this.blockUI.stop();
       });
   }
-  
 }

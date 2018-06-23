@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { JwtHttp } from 'ng2-ui-auth';
 import { BaseResourceService } from './base-resource.service';
 import { Image } from '../models/image';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ImageService extends BaseResourceService <Image> {
-  constructor(private _jwHttp: JwtHttp) {
+  constructor(private _jwHttp: HttpClient) {
       super(_jwHttp, 'images');
   }
 }

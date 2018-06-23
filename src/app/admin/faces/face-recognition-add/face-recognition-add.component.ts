@@ -11,22 +11,23 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui';
 })
 export class FaceRecognitionAddComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
-  public isUploadBtn : boolean = true;
+  public isUploadBtn = true;
+  public response: any;
 
   constructor( private _menuService: MenuService,
     private _messageAlertHandleService: MessageAlertHandleService,
     private _faceService: FaceService) { }
-    
+
   ngOnInit() {
     this._menuService.selectMenuItem('faces');
   }
 
-  onUploadEvent(formData: FormData){
-    
+  onUploadEvent(formData: FormData) {
+
     this.blockUI.start();
     this._faceService.uploadImage(formData).subscribe(
-      (response: any) => {    
-            console.log(response);
+      (response: any) => {
+            this.response = response;
             this.blockUI.stop();
       },
       (error: any) => {
