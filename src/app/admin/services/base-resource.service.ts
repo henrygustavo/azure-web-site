@@ -24,6 +24,14 @@ export abstract class BaseResourceService<T> {
     return entity$;
   }
 
+  public get(id: string): Observable<T> {
+
+    let entity$ = this._http.get(`${this.baseUrl}${this._url}/${id}`)
+      .map((response: any) => <T>response)
+      .catch((error: any) => Observable.throw(error || 'Server error'));
+    return entity$;
+  }
+
   uploadImage(formData: FormData): Observable<any> {
 
     const headers = new HttpHeaders();
