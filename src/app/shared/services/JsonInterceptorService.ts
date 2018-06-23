@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 export class JsonInterceptorService {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (!req.headers.has('isFile')) {
+    if (req.headers.has('isFile')) {
 
       const newReqFile =   req.clone({ setHeaders: { } });
 
