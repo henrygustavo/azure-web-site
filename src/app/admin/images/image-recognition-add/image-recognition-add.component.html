@@ -8,10 +8,9 @@
     <div class="col-md-6 well col-lg-offset-3">
       <div class="form-group">
         <app-upload-file [isUploadBtn]="isUploadBtn" (onUploadEvent)="onUploadEvent($event)"></app-upload-file>
-      
-        <pre>{{response | json}}</pre>
       </div>
     </div>
+    <app-image-json-view [response]="response"></app-image-json-view>
     <div class="row">
       <div class="col-md-6 well col-lg-offset-3">
         <div class="form-group">

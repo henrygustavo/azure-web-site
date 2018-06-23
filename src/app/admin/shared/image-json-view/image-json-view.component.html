@@ -1,0 +1,24 @@
+<div class="row" *ngIf="response">
+    <div class="col-md-6 col-lg-offset-3">
+      <div class="panel panel panel-primary">
+        <div class="panel-heading">
+          Image
+        </div>
+        <div class="panel-body image-view">
+          <img class="img" src="{{response.imagePath}}">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="response">
+    <div class="col-md-6 col-lg-offset-3">
+      <div class="panel panel panel-success">
+        <div class="panel-heading">
+          Response
+        </div>
+        <div class="panel-body">
+          <pre class="jsonResponse">{{response | json}}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
