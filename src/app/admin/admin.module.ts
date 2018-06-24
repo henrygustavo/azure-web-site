@@ -11,14 +11,19 @@ import { FaceRecognitionAddComponent } from './faces/face-recognition-add/face-r
 import { ImageRecognitionAddComponent } from './images/image-recognition-add/image-recognition-add.component';
 import { UploadFileComponent } from './shared/upload-file/upload-file.component';
 import { ImageJsonViewComponent } from './shared/image-json-view/image-json-view.component';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { ModalDialogComponent } from './shared/modal-dialog/modal-dialog.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    adminRoutes
+    adminRoutes,
+    BootstrapModalModule
   ],
-  declarations: [DashBoardComponent, FaceRecognitionListComponent,FaceRecognitionAddComponent,
-                ImageRecognitionListComponent, ImageRecognitionAddComponent, UploadFileComponent, ImageJsonViewComponent],
+  declarations: [DashBoardComponent, FaceRecognitionListComponent, FaceRecognitionAddComponent,
+                ImageRecognitionListComponent, ImageRecognitionAddComponent,
+                UploadFileComponent, ImageJsonViewComponent, ModalDialogComponent],
+  entryComponents: [ModalDialogComponent],
   providers: [AdminGuard, ImageService, FaceService]
 
 })
