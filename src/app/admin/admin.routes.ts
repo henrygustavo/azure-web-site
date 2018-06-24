@@ -42,4 +42,3 @@ const routes: Route[] = [
 ];
 
 export const adminRoutes: ModuleWithProviders = RouterModule.forChild(routes);
-

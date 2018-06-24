@@ -6,7 +6,6 @@ import {MenuItem} from '../../models/menu-item';
 import {MenuService} from '../../services/menu.service';
 import {MessageAlertHandleService} from '../../services/message-alert.service';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
