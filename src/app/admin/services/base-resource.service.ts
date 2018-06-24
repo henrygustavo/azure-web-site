@@ -34,8 +34,7 @@ export abstract class BaseResourceService<T> {
 
   uploadImage(formData: FormData): Observable<any> {
 
-    const headers = new HttpHeaders();
-    headers.set('isFile', 'true'); // check JsonInterceptorService
+    const headers = new HttpHeaders({ 'Is-File': 'true'}); // check JsonInterceptorService
 
     return this._http.post(`${this.baseUrl}${this._url}`, formData, { headers: headers })
         .map((response: any) => response)
