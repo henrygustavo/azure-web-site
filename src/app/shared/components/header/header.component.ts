@@ -1,8 +1,7 @@
-import {Component, OnInit, AfterViewInit, OnDestroy, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, AfterViewInit, OnDestroy, ChangeDetectorRef, ChangeDetectionStrategy} from '@angular/core';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {AuthService} from 'ng2-ui-auth';
-
 import {MenuItem} from '../../models/menu-item';
 import {MenuService} from '../../services/menu.service';
 import {MessageAlertHandleService} from '../../services/message-alert.service';
@@ -11,13 +10,14 @@ import {MessageAlertHandleService} from '../../services/message-alert.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit,
 OnDestroy, AfterViewInit {
 
     public menuItems: MenuItem[];
-    public selectedMenuItem: string;
+    public selectedMenuItem = '';
     public userName: string;
     private subscription: Subscription = new Subscription();
 
@@ -42,6 +42,7 @@ OnDestroy, AfterViewInit {
         const menuSubscription = this._menuService.getSelectedMenuItem()
                                 .subscribe(selectedMenuItem => {
                                     this.selectedMenuItem = selectedMenuItem.text;
+                                    console.log(this.selectedMenuItem);
                                     this._changeDetectorRef.detectChanges();
                                 });
 
@@ -66,5 +67,9 @@ OnDestroy, AfterViewInit {
          );
 
         this.subscription.add(logOutSubscription);
+    }
+
+    isActiveView(menuName: string): boolean {
+        return menuName === this.selectedMenuItem;
     }
 }
